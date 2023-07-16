@@ -11,4 +11,4 @@
 
 * 07.13: R-CNN에서의 가장 큰 문제점인 region proposal 각각 CNN 모델에 학습시켜야 한다는 과도한 연산량 문제의 해결책을 제시한 SPP-NET에 대해 학습하였다. SPP-NET은 나중에 학습하게될 fast R-CNN처럼 이미지 전체에 대하여 딱 한번만 CNN 네트워크를 통과하여 연산량을 줄이고, 이 CNN을 통하여 나온 feature map에 region proposal에서 제안된 부분만을 잘라내고, Spatial Pyramid Pooling이라는 과정을 거쳐 고정된 크기의 벡터로 변환하여 fc layer에 입력한다. 이 SPP-NET으로 연산량은 매우 줄었을 것으로 보이지만, 여전히 마지막 최종 분류단계에서는 SVM을 이용하기에 학습도 번거로울 뿐더러 최적화도 매우 어렵게 되는 문제는 여전히 그대로 남아있었다.
 
-*
+* 07.14: fast R-CNN
