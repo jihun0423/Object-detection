@@ -13,3 +13,4 @@
 
 * 07.14: fast R-CNN은 SPP-NET처럼 전체 이미지를 CNN 네트워크를 통해 feature map을 추출하고, SPP와 유사한 방법으로 풀링을 통해 고정된 크기의 feature vector을 생성한다.  그 뒤는 R-CNN과는 다르게, SVM대신 softmax를 사용해 분류한다. 그 뒤, bounding box regressor을 통해 영역을 산출한다. fast R-CNN의 장점이라 한다면 SPP-NET과 마찬가지로 연산량이 줄었을 뿐더러, 머신러닝 기반인 SVM을 사용했기 때문에 최적화가 복잡하다는 단점을 딥러닝 기반의 softmax로 바꿈으로써 feature 추출, classification, bounding box regressor을 동시에 최적화가 가능해졌다는 것이다. 다만, 여전히 region proposal은 selective search를 사용하기 때문에, 후보 영역에 대해서 추출하는 것은 별개로 해주어야 한다는 단점이 여전하다.
 * 07.15: faster R-CNN을 학습하였는데, 드디어 selective search 기반의 독립적인 region proposal 절차를 벗어나, 딥러닝 기반의 Region Proposal Network (RPN)을 사용함으로써 맨 처음부터 끝까지 하나의 네트워크에서 모든 알고리즘이 동작하는 구조로 진화하였다.
+ 
