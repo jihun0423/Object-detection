@@ -15,3 +15,4 @@
 YOLO-V1은 faster-RCNN보다 훨씬 더 빠르지만, detection 성능이 그렇게 좋지 못하였다. 각 grid cell마다 class를 구분하는 방식이기 때문에, 한 grid cell에 여러개의 class가 동시에 존재하는 경우 정확하게 작동되지 않기 때문이다.
 * 07.20: OpenCV를 이용하여 faster-RCNN의 모델을 불러와 이미지와 영상 속에 있는 class들을 분류하는 실습을 하였다. 불러온 모델은 COCO 데이터셋으로 학습을 하였으며, 80가지의 class에 대하여 faster-RCNN (Back-Bone : Resnet50) 을 통하여 학습이 되어있는 상태이다. 
 * 07.22: Pytorch 기반의 Object Detection 오픈소스 라이브러리인 MMDetection을 사용해보았다. Config기반의 딥러닝 프레임워크는 처음 사용해보는지라, 아직 config가 어떻게 이루어져 있는지에 대해서만 간략하게 학습하였다.
+* 07.24: config기반의 프레임워크를 사용하기 전에, 먼저 one-stage detector에 대해서 좀 더 자세히 학습을 하기로 하였다. 지난번에 학습하였던 YOLO-V1에 이어서, SSD에 대하여 학습을 하였다.
