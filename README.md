@@ -32,3 +32,4 @@ ROI Pooling의 가장 큰 문제점은 이미지의 부분 손실이 많다는 �
 * 08.16: EfficientDet모델을 학습하기로 하였는데, 그 전에 baseline인 EfficientNet에 대하여 학습을 하기로 하였다. 이전에 데이콘 이미지 분류 대회에 참가를 해 보았을 때, 그때 당시의 baseline 모델이 efficientnet-b0 였었고 이 모델을 그대로 사용하였던 것이 기억이 나는데 그때는 Resnet과 같은 다른 pretrained 모델들과의 차이점은 모른 채 그냥 사용했었다. 이번에 학습을 하고 난 뒤에는 명확하게 다른 모델이라는 것을 느꼈다.
 이미지의 특징을 추출하기 위한 Conv-layer은 성능을 향상시키기 위하여 여러가지 방법을 사용하였다. 깊이를 늘리거나 (Depth Scaling. Resnet에서 Resnet 50과 Resnet 101처럼 깊이를 늘린 것), 각 layer에 있는 unit의 수를 늘리거나 (Width Scaling. GoogleNet부터 등장한 1x1 convolution을 통해 파라미터 수도 줄이고 Width도 늘려 비선형성을 증가시켰다), 네트워크의 입력으로 받는 이미지의 해상도, 즉 input size를 늘렸다 (Resolution Scaling).  EfficientNet은 가장 최적의 with/depth/resolution 조합을 찾아 (Compound Scaling) 더욱 빠르면서도 정확도가 높아지게 하였다.
 이러한 EfficientNet을 BackBone으로 사용하는 EfficientDet은 Neck에 기존의 FPN대신 더 발전시킨 BiFPN을 사용한다. 기존의 FPN은 한방향(Top down)으로만 정보의 흐름이 제한되었다면, Bi-FPN은 Bottom up Path도 추가하고 불필요한 Node들을 제거하여 속도를 높이고, 서로 다른 resolution의 feature map끼리의 연산 시 가중치를 주어 정확도도 높인다.
+ 
