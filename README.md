@@ -43,4 +43,4 @@ ROI Pooling의 가장 큰 문제점은 이미지의 부분 손실이 많다는 �
 * 08.20: 한가지 EfficientDet에 대하여 오해를 하였다. EfficientDet의 Compound Scaling이란 EfficientNet에서 사용한 Compound Scaling을 시사하는줄 알았고, EfficientDet은 이 EfficientNet을 BackBone으로 사용한 Object Detection Model이라고 생각했었다. 하지만 자세히 학습을 해 보니, EfficientDet은 또 다른 Compound Scaling을 하고 있었다. Backbone Network, Bi-FPN Network, Prediction Network, Image Resolution 총 4가지의 Scale에 대하여 Compound Scaling을 통해 적합한 조합을 찾는 모델이였다.
 * 08.22: EfficientDet을 Tensorflow Hub를 통해 불러온 뒤, Inference를 해 보았다. 이전 모델들부터 같은 이미지와 영상을 inference 해보는 중인데, 모델이 좋아질수록 성능이 확연히 좋아지는게 느껴진다. 
 
-비전 트랜스포머 모델을 학습하고자 하였으나 도저히 이해가 되지 않아 자연어에서 사용되는 트랜스포머 모델을 먼저 학습해보기로 하였다.
+비전 트랜스포머 모델을 학습하고자 하였으나 도저히 이해가 되지 않아 자연어에서 사용되는 트랜스포머 모델을 먼저 학습해보기로 하였다.  
