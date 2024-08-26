@@ -1,6 +1,6 @@
 # Object-detection
 
-이전에 했던 image-classification 대회 도중에, 성능이 생각보다도 안나와서 이것저것 방법을 찾아보던 중 이미지 분류가 어떻게 발전되어 왔는지에 대한 글을 접하게 된 적이 있었다. 가장 간단한게 CNN기반 이미지 분류였고, 그 다음에 객체 탐지라고 하는 기술이 뒤이어 생겨났다고 한다. 이전에 하던 대회에서는 사용할 수 없는 방법이긴 했지만, 나중에 공부하고 싶다는 생각이 들었었고, 오늘부터 공부를 해보기로 하였다. 아마 당분간은 이론에 대해서 먼저 공부를 하고, 그 뒤에 이론을 기반으로 한 실습을 할 것 같다.
+이전에 했던 image-classification 대회 도중에, 성능이 생각보다도 안나와서 이것저것 방법을 찾아보던 중 이미지 분류가 어떻게 발전되어 왔는지에 대한 글을 접하게 된 적이 있었다. 가장 간단한게 CNN기반 이미지 분류였고, 그 다음에 객체 탐지라고 하는 기술이 뒤이어 생겨났다고 한다. 이전에 하던 대회에서는 사용할 수 없는 방법이긴 했지만, 나중에 공부하고 싶다는 생각이 들었었고, 오늘부터 공부를 해보기로 하였다. 아마 당분간은 이론에 대해서 먼저 공부를 하고, 그 뒤에 이론을 기반으로 한 실습을 할 것 같다.  
 
 
 <br/>
@@ -41,6 +41,7 @@ ROI Pooling의 가장 큰 문제점은 이미지의 부분 손실이 많다는 �
 * 08.17: EfficientNet의 Bi-FPN에 대하여 한가지 의문이 생겨서 조사를 해 보았다. FPN보다도 훨씬 단계가 깊어지고 복잡해진 것처럼 보이는데, 아무리 불필요한 노드들을 약간씩 제거해 주었다고는 해도 결과 표를 보니 연산량이 훨씬 적게 나온 것이다. 이유를 찾아보니 이 Bi-FPN 연산을 할 때 Depth-Wise Convolution을 이용했다고 한다. 이전에 MobileNet의 논문을 지나가듯이 본 적 있었는데, 그때 본 용어인 것 같아 다시 자세하게 보기로 하였다.
 * 08.18: MobileNet의 주요 맹점은 Conv-Net 학습시의 파라미터를 줄이는 것이다. Resnet에서 나온 것처럼 모델을 깊이 할수록 한계는 있지만 성능이 좋아지게 되지만, 반대로 연산량은 기하급수적으로 늘어나게 되고, 이를 해결하기 위한 새로운 방법이 Depth-Wise Convolution이다. 기존의 CNN을 생각해보면 Input의 Channel수가 필터의 높이가 되어, KxKxC 사이즈의 필터를 Output의 사이즈 (M)으로 적용하는 방식이였다면, Depth-Wise Convolution은 KxK 사이즈의 필터를 적용하여 C개의 feature map을 생성한 뒤, 1x1 Convolution을 이용하여 (1x1xCxM) M개로 feature map을 늘리는 방식을 이용한다. 이렇게 되면 같은 결과값이 나오지만 (중간에 1x1 Conv를 이용하였기에 비선형성이 더 증가했을지도..?) 연산량은 매우 줄어드는 결과가 나오게 된다. (K^2*C*M vs K^2*+C*M). 이걸 이용하였기 때문에 EfficientNet에서 Bi-FPN을 사용했을 때 FPN보다도 연산량이 줄어드는 신기한 결과가 나왔던 것이다.
 * 08.20: 한가지 EfficientDet에 대하여 오해를 하였다. EfficientDet의 Compound Scaling이란 EfficientNet에서 사용한 Compound Scaling을 시사하는줄 알았고, EfficientDet은 이 EfficientNet을 BackBone으로 사용한 Object Detection Model이라고 생각했었다. 하지만 자세히 학습을 해 보니, EfficientDet은 또 다른 Compound Scaling을 하고 있었다. Backbone Network, Bi-FPN Network, Prediction Network, Image Resolution 총 4가지의 Scale에 대하여 Compound Scaling을 통해 적합한 조합을 찾는 모델이였다.
-* 08.22: EfficientDet을 Tensorflow Hub를 통해 불러온 뒤, Inference를 해 보았다. 이전 모델들부터 같은 이미지와 영상을 inference 해보는 중인데, 모델이 좋아질수록 성능이 확연히 좋아지는게 느껴진다. 
+* 08.22: EfficientDet을 Tensorflow Hub를 통해 불러온 뒤, Inference를 해 보았다. 이전 모델들부터 같은 이미지와 영상을 inference 해보는 중인데, 모델이 좋아질수록 성능이 확연히 좋아지는게 느껴진다.
+* vision transformer 모델을 공부하고자 하였으나, transformer 모델의 구조를 전혀 이해할 수가 없었기에 잠시 객체탐지 모델의 공부를 멈추고 자연어 모델부터 공부하기로 하였다. 자연어 모델에서 transformer모델까지 학습하면, vit도 이해할 수 있을거라고 생각한다.
 
 비전 트랜스포머 모델을 학습하고자 하였으나 도저히 이해가 되지 않아 자연어에서 사용되는 트랜스포머 모델을 먼저 학습해보기로 하였다.  
